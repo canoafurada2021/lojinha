@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:lojinha_alura/models/item_carrinho.dart';
 import 'package:lojinha_alura/paginas/carrinho.dart';
 import 'package:lojinha_alura/paginas/detalhes.dart';
 import 'package:lojinha_alura/widgets/grid_produtos.dart';
+import 'package:lojinha_alura/widgets/paleta_cores.dart';
 
 import 'widgets/appbar_customizada.dart';
 
@@ -15,11 +18,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {'/carrinho': (context) => Carrinho()},
+      routes: {'/carrinho': (context) => Carrinho()
+      },
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: PaletaCores().lilas,
+
+        textTheme: TextTheme(
+          headline1: TextStyle(fontSize: 20) ,
+        )
       ),
       home: Inicio(),
     );
@@ -27,11 +35,13 @@ class MyApp extends StatelessWidget {
 }
 
 class Inicio extends StatelessWidget {
+
+  static List<ItemCarrinho> itensCarrinho = [];
   final List moveis = [
     {
       'titulo': 'Mesa',
       'preco': 300,
-      'foto': 'movel1.jpeg',
+      'foto': 'movel1.jpg',
       'descricao':
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquam libero id mauris mollis convallis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.'
     },
@@ -82,14 +92,38 @@ class Inicio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
-      appBar: AppBarCustomizada(
-        titulo: 'Lojinha da Alura',
-        ePaginaCarrinho: false,
-      ),
-      body: GridProdutos(
-        moveis: moveis,
-      )
-    );
+        backgroundColor: Colors.grey[200],
+        appBar: AppBarCustomizada(
+          titulo: 'Lojinha da Alura',
+          ePaginaCarrinho: false,
+        ),
+        body: Column(
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                      left: 30,right:20, top: 10, bottom: 10
+                    ),
+                    child: Divider(),
+                  ),
+                ),
+                Text('Produtos'),
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.only(left: 30, right: 20, top: 10, bottom: 10),
+                    child: Divider(),
+                  ),
+                ),
+              ],
+            ),
+            Flexible(
+              child: GridProdutos(
+                moveis: moveis,
+              ),
+            ),
+          ],
+        ));
   }
 }

@@ -1,22 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:lojinha_alura/models/movel.dart';
+import 'package:lojinha_alura/widgets/appbar_customizada.dart';
+import 'package:lojinha_alura/widgets/card_detalhes.dart';
 
+class Detalhes extends StatefulWidget {
+  final Movel movel;
 
-class Detalhes extends StatelessWidget {
-  const Detalhes({Key? key}) : super(key: key);
+  Detalhes({required this.movel});
+
+  _DetalhesState createState() => _DetalhesState();
+}
+
+class _DetalhesState extends State<Detalhes> {
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('atalhos/assets/imagens/${widget.movel.foto}'),
+              fit: BoxFit.cover),
+        ),
+        child: Scaffold(
+            backgroundColor: Colors.transparent,
+            appBar: AppBarCustomizada(
+              titulo: '',
+              ePaginaCarrinho: false,
+            ),
+            body: Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                margin: EdgeInsets.all(16),
+                height: 235,
+                child: CardDetalhes(
+                  atualizaPagina: atualiza,
+                  movel: widget.movel,
+                ),
+              ),
+            )));
+  }
 
-      appBar: AppBar(
-        title: const Text("Detalhes"),
-      ),
-      body: TextButton(
-        child: Text("Bem vindo ao carrinho") ,
-        onPressed: () {
-          Navigator.pushNamed(context, '/carrinho');
-        },
-      ),
-    );
+  atualiza() {
+    setState(() {});
   }
 }
