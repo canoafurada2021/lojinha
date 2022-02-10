@@ -25,18 +25,22 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: PaletaCores().lilas,
 
-        textTheme: TextTheme(
-          headline1: TextStyle(fontSize: 20) ,
+        textTheme: const TextTheme(
+          headline1: TextStyle(fontSize: 20),
+          headline2: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          headline3: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+          headline4: TextStyle(fontSize:20, fontWeight: FontWeight.w200, color: Colors.black)
         )
       ),
       home: Inicio(),
     );
   }
 }
-
 class Inicio extends StatelessWidget {
-
   static List<ItemCarrinho> itensCarrinho = [];
+
+
+
   final List moveis = [
     {
       'titulo': 'Mesa',
@@ -89,6 +93,7 @@ class Inicio extends StatelessWidget {
     },
   ];
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,16 +108,16 @@ class Inicio extends StatelessWidget {
               children: [
                 Expanded(
                   child: Container(
-                    margin: EdgeInsets.only(
+                    margin: const EdgeInsets.only(
                       left: 30,right:20, top: 10, bottom: 10
                     ),
-                    child: Divider(),
+                    child: const Divider(),
                   ),
                 ),
-                Text('Produtos'),
+                const Text('Produtos'),
                 Expanded(
                   child: Container(
-                    margin: EdgeInsets.only(left: 30, right: 20, top: 10, bottom: 10),
+                    margin:const  EdgeInsets.only(left: 30, right: 20, top: 10, bottom: 10),
                     child: Divider(),
                   ),
                 ),
@@ -120,10 +125,16 @@ class Inicio extends StatelessWidget {
             ),
             Flexible(
               child: GridProdutos(
+                atualiza: atualiza,
                 moveis: moveis,
               ),
             ),
           ],
         ));
   }
-}
+  void atualiza() {
+
+
+    }
+  }
+

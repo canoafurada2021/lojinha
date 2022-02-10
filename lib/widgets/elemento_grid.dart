@@ -7,15 +7,19 @@ import 'package:lojinha_alura/widgets/titulo_elemento_grid.dart';
 import '../models/movel.dart';
 
 class ElementoGridProdutos extends StatelessWidget {
-  final Movel movel;
 
-  ElementoGridProdutos({required this.movel});
+
+  final Movel movel;
+  final Function atualiza;
+
+  ElementoGridProdutos({required this.movel, required this.atualiza});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder:(context) => Detalhes(movel: movel,)));
+        Navigator.push(context, MaterialPageRoute(builder:(context) => Detalhes(movel: movel,))
+        ).then((value) => atualiza());
       },
       child: Container(
         decoration: BoxDecoration(boxShadow: [

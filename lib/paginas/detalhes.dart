@@ -33,7 +33,7 @@ class _DetalhesState extends State<Detalhes> {
             body: Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                margin: EdgeInsets.all(16),
+                margin: const  EdgeInsets.all(16),
                 height: 235,
                 child: CardDetalhes(
                   atualizaPagina: atualiza,

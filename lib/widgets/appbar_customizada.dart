@@ -5,17 +5,17 @@ class AppBarCustomizada extends StatelessWidget with PreferredSizeWidget {
 
   final String titulo;
  final bool ePaginaCarrinho;
- AppBarCustomizada({required this.titulo,required this.ePaginaCarrinho});
+ AppBarCustomizada({Key? key, required this.titulo,required this.ePaginaCarrinho}) : super(key: key);
 
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      iconTheme: IconThemeData(
+      iconTheme:const  IconThemeData(
         color: Colors.black,
       ),
       centerTitle: true,
-      title: Text(titulo, style: TextStyle(
+      title: Text(titulo, style:  const TextStyle(
         color: Colors.black
       ),
       ),

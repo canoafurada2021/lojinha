@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 class TituloGridProdutos extends StatelessWidget {
   final String titulo;
 
-  TituloGridProdutos({required this.titulo});
+  const TituloGridProdutos({Key? key, required this.titulo}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

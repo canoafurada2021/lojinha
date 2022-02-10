@@ -6,7 +6,7 @@ class TextoDetalhes extends StatelessWidget {
 
   final String texto;
 
-  TextoDetalhes({required this.texto});
+  const TextoDetalhes({Key? key, required this.texto}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
